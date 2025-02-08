@@ -9,6 +9,7 @@ db_name = os.getenv("DB_NAME")
 
 try:
     connection = pymysql.connect(host=db_host,user=db_user,password=db_password,database=db_name)
+    print("Conexiosn realizada")
 except Exception as e:
     print(f"Error al conectar a la base de datos: {e}")
 connection.close()
