@@ -6,6 +6,12 @@
       "vscode": {
         "extensions": ["ms-python.python"]
       }
+    },
+    "remoteEnv": {
+      "DB_HOST": "${{ secrets.DB_HOST }}",
+      "DB_USER": "${{ secrets.DB_USER }}",
+      "DB_PASSWORD": "${{ secrets.DB_PASSWORD }}",
+      "DB_NAME": "${{ secrets.DB_NAME }}"
     }
-  }
+}
   
