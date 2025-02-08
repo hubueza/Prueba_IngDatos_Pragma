@@ -6,10 +6,11 @@ db_host = os.getenv("DB_HOST")
 db_user = os.getenv("DB_USER")
 db_password = os.getenv("DB_PASSWORD")
 db_name = os.getenv("DB_NAME")
-
+s
 try:
     connection = pymysql.connect(host=db_host,user=db_user,password=db_password,database=db_name)
     print("Conexiosn realizada")
+    print(os.environ)
 except Exception as e:
     print(f"Error al conectar a la base de datos: {e}")
 connection.close()
