@@ -17,19 +17,26 @@ Dentro de esta carpeta se encuentra el archivo `devcontainer.json`, que configur
 > Este archivo ejecuta automáticamente la instalación de las dependencias definidas en `requirements.txt`, por lo que **no es necesario instalar ninguna librería manualmente**.
 
 ### Pasos para ejecutar el proyecto:
-1. **Abre el repositorio en GitHub.**
-2. **Haz clic en** `Code` (botón verde).
-3. **Ve a la pestaña** `Codespaces`.
-4. **Haz clic en** `+` **para crear un nuevo Codespace.**
+1. Iniciar sesión en tu cuenta de **GitHub.**
+2. **Abre el repositorio en GitHub.**
+3. **Haz clic en** `Code` (botón verde).
+4. **Ve a la pestaña** `Codespaces`.
+5. **Haz clic en** `+` **para crear un nuevo Codespace.**
    
    ![Crear Codespace](images/codespace.PNG)
    
-5. **Espera a que el entorno se configure** (aprox. **40s** para instalar las librerías de `requirements.txt`).
+6. **Espera a que el entorno se configure** (aprox. **40s** para instalar las librerías de `requirements.txt`).
    
    ![Extensiones activadas](images/extensiones.PNG)
    
-6. **Abre `script.py` y revisa el código comentado.**
+7. **Abre `script.py` y revisa el código comentado.**
 
-7. **Ejecuta el script en la terminal de Codespaces:**
+8. **Ejecuta el script en la terminal de Codespaces:**
    ```sh
    python3 script.py
+
+### Resultados:
+
+Vista general de **GitHub Codespaces** despues de ejecutar el script:
+
+ ![Resultados](images/resultados.PNG)
