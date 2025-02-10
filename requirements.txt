@@ -1,4 +1,2 @@
 pymysql
-boto3
 pandas
-python-dotenv
