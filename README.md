@@ -17,7 +17,7 @@ Dentro de esta carpeta se encuentra el archivo `devcontainer.json`, que configur
 > Este archivo ejecuta automáticamente la instalación de las dependencias definidas en `requirements.txt`, por lo que **no es necesario instalar ninguna librería manualmente**.
 
 ### Pasos para ejecutar el proyecto:
-1. Iniciar sesión en tu cuenta de **GitHub.**
+1. Iniciar sesión en tu cuenta de [**GitHub**](https://github.com/login)
 2. **Abre el repositorio en GitHub.**
 3. **Haz clic en** `Code` (botón verde).
 4. **Ve a la pestaña** `Codespaces`.
