@@ -1,4 +1,6 @@
-# Se tiene instacia de prueba en RDS para esta prueba, la credenciales son de un usuario con permisos unicamente para la finalidad de este script.
+# Se tiene una instacia de prueba en RDS para este desarrollo, las credenciales son de un usuario con permisos unicamente para la finalidad de este script. Se recomienda 
+# manejar esta información con discreción y no reutilizarla en otros entornos.
+
 # Inicialmente la base de datos ya tiene creada dos tablas
 # La tabla "transactions" la cual almacena los datos de los archivos CSV (timestamp, price, user_id)
 # La tabla "statistics" la cual almacena las estadisticas (total_rows, total_sum_price, min_price, max_price) que se actualizan en cada insercion de registros
