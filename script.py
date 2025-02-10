@@ -1,9 +1,14 @@
+# Se tiene instacia de prueba en RDS para esta prueba, la credenciales son de un usuario con permisos unicamente para la finalidad de este script.
+# Inicialmente la base de datos ya tiene creada dos tablas
+# La tabla "transactions" la cual almacena los datos de los archivos CSV (timestamp, price, user_id)
+# La tabla "statistics" la cual almacena las estadisticas (total_rows, total_sum_price, min_price, max_price) que se actualizan en cada insercion de registros
+
 import os
 from decimal import Decimal
 import pandas as pd
 import pymysql
 
-
+### Se definen las funciones a utilizar 
 
 # Función para limpiar datos, algunos archivos vienen incompletos en algunos campos y con formato incorrecto
 def clean_data(df):
@@ -17,14 +22,11 @@ def clean_data(df):
 
     return df
 
-
 # Función para mostrar estadísticas actuales desde la base de datos
 def print_statistics():
     cursor.execute("SELECT total_rows, total_sum_price/total_rows AS avg_price, min_price, max_price FROM statistics")
     stats = cursor.fetchone()
     print(f"Estadísticas actuales: {stats}")
-
-
 
 # Función para actualizar estadísticas de manera incremental
 def update_statistics(price):
@@ -61,8 +63,9 @@ def update_statistics(price):
     print(f"Estadísticas actualizadas: total_rows={total_rows}, avg_price={total_sum_price/total_rows:.2f}, min_price={min_price}, max_price={max_price}")
 
 
+
+
 # Conectar a MySQL en RDS usando pymysql
-# Tengo una instacia de prueba en RDS para esta prueba, la credenciales son unicamente para la finalidad de este script
 conn = pymysql.connect(
     host="database-test-pragma.c14kkq4s62v9.us-east-1.rds.amazonaws.com",
     user="user_pragma",
@@ -72,12 +75,7 @@ conn = pymysql.connect(
 )
 cursor = conn.cursor()
 
-# Inicialmente la base de datos ya tiene creada dos tablas
-# La tabla "transactions" la cual almacena los datos de los archivos CSV (timestamp, price, user_id)
-# La tabla "statistics" la cual almacena las estadisticas (total_rows, total_sum_price, min_price, max_price) que se actualizan en cada insercion de registros
-
-
-# Limpiar las tablas antes de procesar nuevos archivos
+# Limpiar las tablas antes de procesar nuevos archivos , con la finalidad de correr el script sin acumular filas en las tablas
 cursor.execute("DELETE FROM transactions")
 cursor.execute("ALTER TABLE transactions AUTO_INCREMENT = 1")
 
@@ -85,13 +83,14 @@ cursor.execute("DELETE FROM statistics")
 cursor.execute("ALTER TABLE statistics AUTO_INCREMENT = 1")
 conn.commit()
 
+
+## Agregar los archivos a la BD
 # Procesar archivos en la carpeta "file"
 for file in sorted(os.listdir("./file")):
     if file == "validation.csv":
         continue  # Ignorar validation.csv por ahora
 
     df = pd.read_csv(os.path.join("file", file))
-
     df = clean_data(df)  # Aplicar limpieza de datos
 
     for _, row in df.iterrows():
@@ -109,7 +108,7 @@ print("\nEstadísticas DESPUÉS de procesar todos los archivos CSV:")
 print_statistics()
 
 
-
+### Validacion
 # Procesar validation.csv
 print("\nProcesando validation.csv...")
 df_val = pd.read_csv("file/validation.csv")
@@ -128,7 +127,6 @@ print(f"------------------------ Archivo {file} procesado. ---------------------
 # Mostrar estadísticas finales después de validation.csv
 print("\nEstadísticas DESPUÉS de procesar validation.csv:")
 print_statistics()
-
 
 # Cerrar conexión
 cursor.close()
