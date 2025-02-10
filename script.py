@@ -1,7 +1,3 @@
-# Instalar
-# pip install pandas pymysql
-
-
 import os
 from decimal import Decimal
 import pandas as pd
