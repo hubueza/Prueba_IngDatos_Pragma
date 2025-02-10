@@ -1,4 +1,4 @@
-# Data Pipeline para Procesamiento de CSV en MySQL
+# Data Pipeline para Procesamiento de  archivos CSV en MySQL
 
 Este proyecto implementa un **pipeline de datos** para procesar archivos **CSV** en **microbatches**, almacenarlos en **MySQL (RDS)** y calcular estadísticas en tiempo real.
 
