@@ -26,7 +26,7 @@ def clean_data(df):
 def print_statistics():
     cursor.execute("SELECT total_rows, total_sum_price/total_rows AS avg_price, min_price, max_price FROM statistics")
     stats = cursor.fetchone()
-    print(f"Estadísticas actuales: {stats}")
+    print(f"Estadísticas actuales: {stats}\n")
 
 # Función para actualizar estadísticas de manera incremental
 def update_statistics(price):
